@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+      html, body {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+      }
+
+      .box {
+          display: flex;
+          height: 100%;
+      }
+
+      .box > .box-content {
+          width: 100%;
+          overflow: auto;
+      }
+
+      .box > .box-content > p {
+          min-width: 500px;
+          height: 500px;
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .box > .box-content > p > span {
+          color: #ffffff;
+          font-size: 40px;
+      }
+
+      .scroll-bar {
+          width: 20px;
+          background: #00b7ee;
+      }
+
+      .scroll-bar > div {
+          background: #030303;
+      }
+
+      .scroll-bar > div:active {
+          cursor: pointer;
+      }
+
+      #toggle-vertical {
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+        padding: 10px;
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="box-content">
+        <p style="background: #007bff">
+            <span>内容1</span>
+        </p>
+        <p style="background: #ae012b">
+            <span>内容2</span>
+        </p>
+        <p style="background: #357376">
+            <span>内容3</span>
+        </p>
+        <p style="background: #fe0138">
+            <span>内容4</span>
+        </p>
+        <p style="background: #ff6547">
+            <span>内容5</span>
+        </p>
+        <p style="background: #ff5400">
+            <span>内容6</span>
+        </p>
+        <p style="background: #bdbdbd">
+            <span>内容7</span>
+        </p>
+        <p style="background:#fdd997">
+            <span>内容8</span>
+        </p>
+    </div>
+</div>
+<div id="toggle-vertical">生成自定义竖向滚动条</div>
+<script src="./customScrollBar.js"></script>
+<script>
+  let pos = 'top';
+  const btn = document.getElementById('toggle-vertical');
+  const container = document.querySelector('.box');
+  const content = document.querySelector('.box-content');
+  btn.addEventListener('click', () => {
+    if (pos === 'left' || pos === 'right') {
+      pos = 'top';
+      content.style.display = 'flex';
+    } else {
+      pos = 'right';
+      content.style.display = 'block';
+    }
+    btn.innerText = `生成自定义${pos === 'top' ? '竖向' : '横向'}滚动条`
+    new QBScrollBar({
+      pos,
+      width: 20,
+      height: 20,
+      fgColor: 'orange',
+      absContainer: document.body,
+      container,
+      content
+    });
+  })
+</script>
+</body>
+</html>
