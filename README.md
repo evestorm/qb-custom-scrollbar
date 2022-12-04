@@ -2,6 +2,8 @@
 
 自定义滚动条
 
+![示例](./qb-scrollbar.gif)
+
 ## 安装方式
 
 全局引入 `./customScrollBar.js`
