@@ -1,4 +1,4 @@
-# custom-scrollbar
+# qb-custom-scrollbar
 
 自定义滚动条
 
@@ -6,7 +6,7 @@
 
 ## 安装方式
 
-全局引入 `./customScrollBar.js`
+全局引入 `./qbCustomScrollBar.js`
 
 ## 使用方法
 
